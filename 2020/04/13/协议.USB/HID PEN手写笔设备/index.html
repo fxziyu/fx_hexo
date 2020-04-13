@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="HID PEN手写笔设备描述符123456789101112131415161718192021222324252627282930313233343536373839404142434445464748&#x2F;* USB PEN HID描述符 *&#x2F;&#x2F;* HID Report Descriptor PEN *&#x2F;const u8 Pen_ReportDescriptor[] &#x3D;&amp;#123;    0x05">
+<meta property="og:type" content="article">
+<meta property="og:title" content="协议.USB&#x2F;HID PEN手写笔设备">
+<meta property="og:url" content="http://yoursite.com/2020/04/13/%E5%8D%8F%E8%AE%AE.USB/HID%20PEN%E6%89%8B%E5%86%99%E7%AC%94%E8%AE%BE%E5%A4%87/index.html">
+<meta property="og:site_name" content="学习随笔">
+<meta property="og:description" content="HID PEN手写笔设备描述符123456789101112131415161718192021222324252627282930313233343536373839404142434445464748&#x2F;* USB PEN HID描述符 *&#x2F;&#x2F;* HID Report Descriptor PEN *&#x2F;const u8 Pen_ReportDescriptor[] &#x3D;&amp;#123;    0x05">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-13T02:42:06.554Z">
+<meta property="article:modified_time" content="2019-03-07T08:10:13.692Z">
+<meta property="article:author" content="leon">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/13/%E5%8D%8F%E8%AE%AE.USB/HID%20PEN%E6%89%8B%E5%86%99%E7%AC%94%E8%AE%BE%E5%A4%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>协议.USB/HID PEN手写笔设备 | 学习随笔</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学习随笔</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/%E5%8D%8F%E8%AE%AE.USB/HID%20PEN%E6%89%8B%E5%86%99%E7%AC%94%E8%AE%BE%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="leon">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习随笔">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          协议.USB/HID PEN手写笔设备
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-13 10:42:06" itemprop="dateCreated datePublished" datetime="2020-04-13T10:42:06+08:00">2020-04-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-07 16:10:13" itemprop="dateModified" datetime="2019-03-07T16:10:13+08:00">2019-03-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="HID-PEN手写笔设备"><a href="#HID-PEN手写笔设备" class="headerlink" title="HID PEN手写笔设备"></a>HID PEN手写笔设备</h1><h2 id="描述符"><a href="#描述符" class="headerlink" title="描述符"></a>描述符</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* USB PEN HID描述符 */</span></span><br><span class="line"><span class="comment">/* HID Report Descriptor PEN */</span></span><br><span class="line"><span class="keyword">const</span> u8 Pen_ReportDescriptor[] =</span><br><span class="line">&#123;</span><br><span class="line">    <span class="number">0x05</span>, <span class="number">0x0d</span>,             <span class="comment">//  USAGE_PAGE (Digitizers)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x02</span>,             <span class="comment">//  USAGE (Pen)</span></span><br><span class="line">    <span class="number">0xa1</span>, <span class="number">0x01</span>,             <span class="comment">//  COLLECTION (Application)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x20</span>,             <span class="comment">//      USAGE (Stylus)</span></span><br><span class="line">    <span class="number">0xa1</span>, <span class="number">0x00</span>,             <span class="comment">//      COLLECTION (Physical)</span></span><br><span class="line"><span class="comment">//    0x85, REPORT_ID_PEN,    //          REPORT_ID (Pen)        </span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x42</span>,             <span class="comment">//          USAGE (Tip Switch)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x44</span>,             <span class="comment">//          USAGE (Barrel Switch)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x45</span>,             <span class="comment">//          USAGE (Eraser Switch)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x3c</span>,             <span class="comment">//          USAGE (Invert)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x32</span>,             <span class="comment">//          USAGE (In Range)</span></span><br><span class="line">    <span class="number">0x15</span>, <span class="number">0x00</span>,             <span class="comment">//          LOGICAL_MINIMUM (0)</span></span><br><span class="line">    <span class="number">0x25</span>, <span class="number">0x01</span>,             <span class="comment">//          LOGICAL_MAXIMUM (1)</span></span><br><span class="line">    <span class="number">0x75</span>, <span class="number">0x01</span>,             <span class="comment">//          REPORT_SIZE (1)</span></span><br><span class="line">    <span class="number">0x95</span>, <span class="number">0x05</span>,             <span class="comment">//          REPORT_COUNT (5)</span></span><br><span class="line">    <span class="number">0x81</span>, <span class="number">0x02</span>,             <span class="comment">//          INPUT (Data,Var,Abs)</span></span><br><span class="line">    <span class="number">0x95</span>, <span class="number">0x0b</span>,             <span class="comment">//          REPORT_COUNT (11)</span></span><br><span class="line">    <span class="number">0x81</span>, <span class="number">0x03</span>,             <span class="comment">//          INPUT (Cnst,Var,Abs)</span></span><br><span class="line">    <span class="number">0x05</span>, <span class="number">0x01</span>,             <span class="comment">//          USAGE_PAGE (Generic Desktop)</span></span><br><span class="line">    <span class="number">0x26</span>, <span class="number">0xff</span>, <span class="number">0x7f</span>,       <span class="comment">//          LOGICAL_MAXIMUM (32767)</span></span><br><span class="line">    <span class="number">0x75</span>, <span class="number">0x10</span>,             <span class="comment">//          REPORT_SIZE (16)</span></span><br><span class="line">    <span class="number">0x95</span>, <span class="number">0x01</span>,             <span class="comment">//          REPORT_COUNT (1)</span></span><br><span class="line">    <span class="number">0xa4</span>,                   <span class="comment">//          PUSH</span></span><br><span class="line">    <span class="number">0x55</span>, <span class="number">0x0d</span>,             <span class="comment">//          UNIT_EXPONENT (-3)</span></span><br><span class="line">    <span class="number">0x65</span>, <span class="number">0x33</span>,             <span class="comment">//          UNIT (Inch,EngLinear)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x30</span>,             <span class="comment">//          USAGE (X)</span></span><br><span class="line">    <span class="number">0x35</span>, <span class="number">0x00</span>,             <span class="comment">//          PHYSICAL_MINIMUM (0)</span></span><br><span class="line">    <span class="number">0x46</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,       <span class="comment">//          PHYSICAL_MAXIMUM (0)</span></span><br><span class="line">    <span class="number">0x81</span>, <span class="number">0x02</span>,             <span class="comment">//          INPUT (Data,Var,Abs)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x31</span>,             <span class="comment">//          USAGE (Y)</span></span><br><span class="line">    <span class="number">0x46</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,       <span class="comment">//          PHYSICAL_MAXIMUM (0)</span></span><br><span class="line">    <span class="number">0x81</span>, <span class="number">0x02</span>,             <span class="comment">//          INPUT (Data,Var,Abs)</span></span><br><span class="line">    <span class="number">0xb4</span>,                   <span class="comment">//          POP</span></span><br><span class="line">    <span class="number">0x05</span>, <span class="number">0x0d</span>,             <span class="comment">//          USAGE_PAGE (Digitizers)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x30</span>,             <span class="comment">//          USAGE (Tip Pressure)</span></span><br><span class="line">    <span class="number">0x81</span>, <span class="number">0x02</span>,             <span class="comment">//          INPUT (Data,Var,Abs)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x3d</span>,             <span class="comment">//          USAGE (X Tilt)</span></span><br><span class="line">    <span class="number">0x09</span>, <span class="number">0x3e</span>,             <span class="comment">//          USAGE (Y Tilt)</span></span><br><span class="line">    <span class="number">0x16</span>, <span class="number">0x01</span>, <span class="number">0x80</span>,       <span class="comment">//          LOGICAL_MINIMUM (-32767)</span></span><br><span class="line">    <span class="number">0x95</span>, <span class="number">0x02</span>,             <span class="comment">//          REPORT_COUNT (2)</span></span><br><span class="line">    <span class="number">0x81</span>, <span class="number">0x02</span>,             <span class="comment">//          INPUT (Data,Var,Abs)</span></span><br><span class="line">    <span class="number">0xc0</span>,                   <span class="comment">//      END_COLLECTION</span></span><br><span class="line">    <span class="number">0xc0</span>,                   <span class="comment">//  END_COLLECTION</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="报文说明"><a href="#报文说明" class="headerlink" title="报文说明"></a>报文说明</h2><p>Pen Input报文共9Byte  </p>
+<p><strong><em>Byte0 Byte1 Byte2 Byte3 Byte4 Byte5 Byte6 Byte7 Byte8 Byte9 Byte10  Byte11</em></strong></p>
+<pre><code>Byte0 -- 开关
+      |--Bit0: Tip switch触点开关
+      |--Bit1:Barrel Switch桶开关
+      |--Bit2:Eraser Switch擦开关
+      |--Bit3:Invert反转
+      |--Bit4:In Range
+      |--Bit5:填0，保留
+      |--Bit6:填0，保留
+      |--Bit7:填0，保留
+
+    笔操作流程：
+        笔尖悬空 0x10
+        笔尖接触屏幕 0x11
+        笔尖抬起 0x10
+        笔尖释放 0x00  
+
+    橡皮擦操作流程：
+        橡皮擦悬空 0x1a
+        橡皮擦接触屏幕 0x16
+        橡皮擦抬起 0x1a
+        橡皮擦释放 0x00
+
+Byte 1:0x00保留
+
+Byte 2~3 : X坐标
+
+Byte 4~5 : Y坐标
+
+Byte 6~7 : Tip Pressure 压力 
+
+Byte 8~9 : X Tilt
+
+Byte 10~11 :Y Tilt</code></pre><p><strong>Byte8~11可以在HID描述符里删除</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/13/%E5%8D%8F%E8%AE%AE.USB/BUS%20HOUND%E8%B0%83%E8%AF%95USB%E9%A9%B1%E5%8A%A8%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="prev" title="协议.USB/BUS HOUND调试USB驱动遇到的错误代码解析">
+      <i class="fa fa-chevron-left"></i> 协议.USB/BUS HOUND调试USB驱动遇到的错误代码解析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/13/%E5%8D%8F%E8%AE%AE.USB/HID%20%E5%8F%8C%E7%82%B9Touch/" rel="next" title="协议.USB/HID 双点Touch">
+      协议.USB/HID 双点Touch <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HID-PEN手写笔设备"><span class="nav-number">1.</span> <span class="nav-text">HID PEN手写笔设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述符"><span class="nav-number">1.1.</span> <span class="nav-text">描述符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报文说明"><span class="nav-number">1.2.</span> <span class="nav-text">报文说明</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">leon</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">leon</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
